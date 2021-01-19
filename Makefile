@@ -50,4 +50,3 @@ ifeq (, $(shell which golangci-lint))
 	$(error "No golangci-lint in $(PATH), consider installing it from https://golangci-lint.run/usage/install/")
 endif
 	golangci-lint --version
-
