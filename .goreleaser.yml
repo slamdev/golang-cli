@@ -1,0 +1,29 @@
+dist: bin
+before:
+  hooks:
+    - go mod download
+    - make verify
+builds:
+  - main: "./main.go"
+    binary: "{{ .ProjectName }}"
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+archives:
+  - name_template: "{{ .ProjectName }}_{{ .Os }}"
+    format: binary
+snapshot:
+  name_template: "{{ .Tag }}-next"
+dockers:
+  - image_templates:
+      - "slamdev/{{ .ProjectName }}:latest"
+      - "slamdev/{{ .ProjectName }}:{{ .Tag }}"
+checksum:
+  name_template: "checksums.txt"
+changelog:
+  skip: false
