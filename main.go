@@ -1,7 +1,7 @@
 package main
 
-import "fmt"
+import "github.com/slamdev/golang-cli/internal"
 
 func main() {
-	fmt.Print("it's alive")
+	internal.ExecuteCmd()
 }

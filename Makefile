@@ -2,7 +2,7 @@ build:
 	go build -o bin/golang-cli ./.
 
 run: build
-	./bin/golang-cli
+	./bin/golang-cli version
 
 deps:
 	go mod verify
