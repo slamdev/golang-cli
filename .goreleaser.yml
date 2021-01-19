@@ -41,6 +41,12 @@ dockers:
   - image_templates:
       - "ghcr.io/slamdev/{{ .ProjectName }}:latest"
       - "ghcr.io/slamdev/{{ .ProjectName }}:{{ .Tag }}"
+    build_flag_templates:
+      - "--label=org.opencontainers.image.created={{ .Date }}"
+      - "--label=org.opencontainers.image.title={{ .ProjectName }}"
+      - "--label=org.opencontainers.image.revision={{ .FullCommit }}"
+      - "--label=org.opencontainers.image.version={{ .Version }}"
+      - "--label=org.opencontainers.image.source=https://github.com/slamdev/{{ .ProjectName }}"
 checksum:
   name_template: '{{ .ProjectName }}_{{ .Version }}_SHA256SUMS'
   algorithm: sha256
